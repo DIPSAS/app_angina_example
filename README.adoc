@@ -1,0 +1,5 @@
+= Angina klassifisering 
+
+== Innledning 
+Repoet inneholder kliniske modeller i form av arketyper, templater og forms for en enkel applikasjon for klassifisering av pasientens angina symptomer. Det er også utviklet en strukturert spørring i form av VAQM for uthenting av data fra arketypen. Formålet med mini-applikasjonen er å vise hvordan DIPS Arena benytter openEHR for å utvikle enkel beslutningsstøtte. 
+

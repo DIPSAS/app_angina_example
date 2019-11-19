@@ -1,0 +1,202 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.cds_recommendation.v0
+
+concept
+	[at0000]	-- CDS Anbefaling
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["no"] = <
+			language = <[ISO_639-1::no]>
+			author = <
+				["name"] = <"Bjørn Næss">
+				["email"] = <"bna@dips.no">
+				["organisation"] = <"DIPS AS">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Bjørn Næss">
+		["email"] = <"bna@dips.no">
+		["organisation"] = <"DIPS ASA">
+		["date"] = <"2015-11-13">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"A data structure to collect data as outcome fra a decision/guideline rule execution. ">
+			use = <"Use to collect data from a rule execution by a CDS runtime. I.e. the result from a GDL execution. ">
+			keywords = <"cds", ...>
+			misuse = <"Not to be used to record recommendation from human beings">
+			copyright = <"">
+		>
+		["no"] = <
+			language = <[ISO_639-1::no]>
+			purpose = <"*A data structure to collect data as outcome fra a decision/guideline rule execution. (en)">
+			use = <"*Use to collect data from a rule execution by a CDS runtime. I.e. the result from a GDL execution. (en)">
+			keywords = <"*cds(en)", ...>
+			misuse = <"*Not to be used to record recommendation from human beings(en)">
+			copyright = <"*(en)">
+		>
+	>
+	lifecycle_state = <"NotSet">
+	other_contributors = <"Tomas N. Alme", ...>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"45094BAD602CE50FCB915EB3B547E56B">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- CDS Anbefaling
+		data matches {
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Sammendrag
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Styrke
+						value matches {
+							0|[local::at0004], 	-- *Not significant(en)
+							1|[local::at0005], 	-- *Minor significance(en)
+							2|[local::at0006], 	-- *Significant(en)
+							3|[local::at0007], 	-- *Very significant(en)
+							4|[local::at0008], 	-- *Important(en)
+							5|[local::at0009]  	-- *Critical(en)
+						}
+					}
+					CLUSTER[at0010] occurrences matches {0..*} matches {	-- *Guidelines(en)
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0012] occurrences matches {0..1} matches {	-- *Abstract(en)
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0011] occurrences matches {0..*} matches {	-- *URL to guideline(en)
+								value matches {
+									DV_URI matches {*}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"CDS Recommendation">
+					description = <"A recommendation as outcome from a CDS execution. ">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Summary">
+					description = <"The summary of this recommendation as a narrative description to the clinician">
+				>
+				["at0003"] = <
+					text = <"Strength">
+					description = <"Defines the strength of the recommendation. ">
+				>
+				["at0004"] = <
+					text = <"Not significant">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Minor significance">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Significant">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Very significant">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Important">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Critical">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Guidelines">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"URL to guideline">
+					description = <"The URL to the guideline as documentation of this guideline">
+				>
+				["at0012"] = <
+					text = <"Abstract">
+					description = <"Abstract of the guideline">
+				>
+			>
+		>
+		["no"] = <
+			items = <
+				["at0000"] = <
+					text = <"CDS Anbefaling">
+					description = <"Anbefaling som resultat av beslutningsstøtte">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Sammendrag">
+					description = <"*The summary of this recommendation as a narrative description to the clinician(en)">
+				>
+				["at0003"] = <
+					text = <"Styrke">
+					description = <"Angir graden/styrken på anbefalingen.">
+				>
+				["at0004"] = <
+					text = <"*Not significant(en)">
+					description = <"**(en)">
+				>
+				["at0005"] = <
+					text = <"*Minor significance(en)">
+					description = <"**(en)">
+				>
+				["at0006"] = <
+					text = <"*Significant(en)">
+					description = <"**(en)">
+				>
+				["at0007"] = <
+					text = <"*Very significant(en)">
+					description = <"**(en)">
+				>
+				["at0008"] = <
+					text = <"*Important(en)">
+					description = <"**(en)">
+				>
+				["at0009"] = <
+					text = <"*Critical(en)">
+					description = <"**(en)">
+				>
+				["at0010"] = <
+					text = <"*Guidelines(en)">
+					description = <"**(en)">
+				>
+				["at0011"] = <
+					text = <"*URL to guideline(en)">
+					description = <"*The URL to the guideline as documentation of this guideline(en)">
+				>
+				["at0012"] = <
+					text = <"*Abstract(en)">
+					description = <"*Abstract of the guideline(en)">
+				>
+			>
+		>
+	>
